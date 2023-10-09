@@ -1,0 +1,24 @@
+<resources>
+    <!--activity_register-->
+    <string name="app_name">Deliverable_1</string>
+    <string name="user_name">Username</string>
+    <string name="input_email">Email</string>
+    <string name="input_password">Password</string>
+    <string name="input_confirm_password">Confirm Password</string>
+
+    <!--activity_login-->
+    <string name="btn_left">Instagram</string>
+    <string name="btn_right">Facebook</string>
+
+    <!--activity_home_page-->
+    <string name="intro">Hello</string>
+
+
+    <!--these are the drop down option: roles-->
+    <string-array name="dropdown_roles">
+        <item>None Selected...</item>
+        <item>Admin</item>
+        <item>Cycling Club</item>
+        <item>Participant</item>
+    </string-array>
+</resources>
