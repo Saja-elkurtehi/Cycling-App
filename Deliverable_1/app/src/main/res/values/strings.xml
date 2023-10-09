@@ -15,7 +15,7 @@
 
 
     <!--these are the drop down option: roles-->
-    <string-array name="dropdown_roles">
+    <string-array name="roles_array">
         <item>None Selected...</item>
         <item>Admin</item>
         <item>Cycling Club</item>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -101,40 +102,38 @@
             android:layout_height="wrap_content"
             android:text="Sign Up"
             android:textColor="@color/colorYellow" />
-
-
     </LinearLayout>
 
+    <!-- Facebook button -->
     <Button
-        android:id="@+id/btnGoogle"
+        android:id="@+id/btnFacebook"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginLeft="58dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="8dp"
-        android:text="@string/btn_left"
-        app:layout_constraintEnd_toStartOf="@+id/btnFaceBook"
+        android:text="Facebook"
+        app:layout_constraintEnd_toStartOf="@+id/btnInstagram"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+    <!-- Instagram button -->
     <Button
-        android:id="@+id/btnFaceBook"
+        android:id="@+id/btnInstagram"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginRight="58dp"
-        android:text="@string/btn_right"
-        app:layout_constraintBottom_toBottomOf="@+id/btnGoogle"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Instagram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnGoogle"
-        app:layout_constraintTop_toTopOf="@+id/btnGoogle" />
+        app:layout_constraintStart_toEndOf="@+id/btnFacebook"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+
+    <!-- Login button -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
