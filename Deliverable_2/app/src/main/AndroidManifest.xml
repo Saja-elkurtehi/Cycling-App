@@ -27,6 +27,11 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="true">
+            <!-- Add any intent filters, labels, or configurations if needed -->
+        </activity>
     </application>
 
 </manifest>
