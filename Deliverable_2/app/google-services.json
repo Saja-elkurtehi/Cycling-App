@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "903748832399",
+    "project_id": "alpii-200",
+    "storage_bucket": "alpii-200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:903748832399:android:816bc479003a6c72ee34fa",
+        "android_client_info": {
+          "package_name": "com.example.deliverable_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR6HMI06-UBudr_12fbEeniZgUmPmCxf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
