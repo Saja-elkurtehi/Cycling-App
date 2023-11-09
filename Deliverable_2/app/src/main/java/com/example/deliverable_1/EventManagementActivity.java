@@ -7,10 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
@@ -170,7 +167,6 @@ public class EventManagementActivity extends AppCompatActivity {
             }
         });
     }
-
 
     // Helper method to clear input fields and checkboxes
     private void clearInputFields() {
