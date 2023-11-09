@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             if (username.equals("admin") && password.equals("admin")) {
                 // redirect to admin page
-                Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
+                Intent adminIntent = new Intent(LoginActivity.this, AdminLoginActivity.class);
                 startActivity(adminIntent);
             } else {
                 // for now assume user is participant
