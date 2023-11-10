@@ -11,6 +11,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText inputUsername, inputPassword, inputEmail, inputConfirmPassword;
@@ -59,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (username.isEmpty() || username.length() < 5) {
             showError(inputUsername, "Please enter a valid username (minimum 5 characters).");
             return false;
-        } else if (email.isEmpty() || !email.contains("@")) {
+        } else if (email.isEmpty() || validate_email(email)) {
             showError(inputEmail, "Please enter a valid email address.");
             return false;
         } else if (password.isEmpty() || password.length() < 5) {
@@ -73,6 +76,15 @@ public class RegisterActivity extends AppCompatActivity {
         return true;
     }
 
+    public boolean validate_email(String email) {
+        String regex = "^[a-zA-Z0-9_][a-zA-Z0-9_]+@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)";
+
+        Pattern pattern = Pattern.compile(regex, Pattern.UNICODE_CASE);
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.matches();
+    }
+
     private void showError(EditText input, String message) {
         input.setError(message);
         input.requestFocus(); // Will show the error
@@ -81,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void onClick(View v) {
         if (checkCredentials()) {
             // Call registration method or perform appropriate action
-            Toast.makeText(this, "Call Registration Method", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Call Registration Method", Toast.LENGTH_SHORT).show();
         }
     }
 
