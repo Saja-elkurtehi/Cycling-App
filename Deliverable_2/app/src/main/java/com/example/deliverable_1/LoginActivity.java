@@ -54,7 +54,13 @@ public class LoginActivity extends AppCompatActivity {
                 // redirect to admin page
                 Intent adminIntent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
                 startActivity(adminIntent);
-            } else {
+            } else if (password.equals("clubowner")){
+                String accountType = "Club Owner";
+                Intent homeIntent = new Intent(LoginActivity.this, HomePage.class);
+                homeIntent.putExtra("USERNAME", username);
+                homeIntent.putExtra("ACCOUNT_TYPE", accountType);
+                startActivity(homeIntent);
+            } else{
                 // for now assume user is participant
                 String accountType = "Participant";
                 // Pass the username and account type to HomePage activity
