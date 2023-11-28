@@ -99,7 +99,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonPlanRoute"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Submit Route"

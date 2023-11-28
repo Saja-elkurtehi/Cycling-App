@@ -8,4 +8,151 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="377dp"
+            android:layout_height="47dp"
+            android:text="Results and Awards"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="33dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1st Place: (User)"
+            android:textAlignment="center"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gold Medal" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Good Sport" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Most Effort" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2nd Place: (User2)"
+            android:textAlignment="center"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Silver Medal" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Good Sport" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Most Effort" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3rd Place: (User 3)"
+            android:textAlignment="center"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bronze Medal" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Good Sport" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Most Effort" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+        <Button
+            android:id="@+id/buttonSendAwards"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Awards" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
