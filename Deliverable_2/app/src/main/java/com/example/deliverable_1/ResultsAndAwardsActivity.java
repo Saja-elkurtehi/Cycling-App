@@ -1,4 +1,6 @@
 package com.example.deliverable_1;
 
-public class ResultsAndAwardsActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ResultsAndAwardsActivity extends AppCompatActivity {
 }

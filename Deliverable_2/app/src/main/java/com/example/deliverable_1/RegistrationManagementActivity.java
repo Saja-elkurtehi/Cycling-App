@@ -1,4 +1,6 @@
 package com.example.deliverable_1;
 
-public class RegistrationManagementActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class RegistrationManagementActivity extends AppCompatActivity {
 }

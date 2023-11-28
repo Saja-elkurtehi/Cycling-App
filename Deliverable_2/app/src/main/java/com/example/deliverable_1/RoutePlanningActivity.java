@@ -1,4 +1,6 @@
 package com.example.deliverable_1;
 
-public class RoutePlanningActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class RoutePlanningActivity extends AppCompatActivity {
 }
