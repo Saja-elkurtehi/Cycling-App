@@ -8,4 +8,22 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="377dp"
+        android:layout_height="47dp"
+        android:text="Registration Management"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="33dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
