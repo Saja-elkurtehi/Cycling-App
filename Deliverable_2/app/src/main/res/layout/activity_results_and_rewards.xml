@@ -83,21 +83,21 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButton4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Silver Medal" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButton5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Good Sport" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButton6"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -122,21 +122,21 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioButton7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Bronze Medal" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioButton8"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Good Sport" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButton9"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
