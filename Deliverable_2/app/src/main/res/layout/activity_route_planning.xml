@@ -21,8 +21,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="564dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="154dp">
+        tools:layout_editor_absoluteX="-94dp"
+        tools:layout_editor_absoluteY="83dp">
 
         <LinearLayout
             android:layout_width="190dp"
@@ -32,8 +32,9 @@
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Destination: "
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -41,8 +42,9 @@
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Elevation: "
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -50,8 +52,9 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Landmarks: "
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -66,8 +69,9 @@
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="DestinationText"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -75,8 +79,9 @@
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="ElevationText"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -84,12 +89,21 @@
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="LandmarksText"
                 android:textAlignment="center"
                 android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Route"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="652dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
