@@ -1,9 +1,10 @@
-package com.example.deliverable_3;
+package com.example.deliverable_1;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RoutePlanningActivity extends AppCompatActivity {
 
     // Initialize views
-    private EditText destinationEditText, elevationEditText, landmarksEditText;
+    private TextView destinationEditText, elevationEditText, landmarksEditText;
     private Button submitRouteButton;
 
     @Override
