@@ -26,4 +26,6 @@
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="33dp" />
 
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
