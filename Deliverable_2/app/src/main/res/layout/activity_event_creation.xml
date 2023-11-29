@@ -21,7 +21,7 @@
             android:text="Event Type: " />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/eventSelectionSpinner"
             android:layout_width="259dp"
             android:layout_height="48dp"
             android:layout_weight="1" />
@@ -74,7 +74,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -85,14 +85,18 @@
             android:text="Particpant Limit: " />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/participantLimit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:text="Enter the max participants" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="69dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,7 +104,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnCreateEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
