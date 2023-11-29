@@ -22,6 +22,8 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
         Button eventCreationButton = findViewById(R.id.btnEventCreation);
         Button registrationManagementButton = findViewById(R.id.btnRegistrationManagement);
         Button resultsAndAwardsButton = findViewById(R.id.btnResultsAndAwards);
+
+        // / Set click listeners for the buttons
         eventCreationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
