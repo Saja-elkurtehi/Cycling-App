@@ -30,22 +30,23 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnEventCreation"
+            android:id="@+id/btnCompleteClubProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create an Event"
+            android:text="Edit your Club Profile"
             android:textColor="@color/colorLightBlue"
             android:textSize="18sp" />
+
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="29dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnEventCreation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete an Event"
+            android:text="Create an Event"
             android:textColor="@color/colorLightBlue"
             android:textSize="18sp" />
 
