@@ -15,10 +15,13 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clubowner_dashboard);
 
-        TextView welcomeText = findViewById(R.id.welcomeText);
-        welcomeText.setText("Welcome (Club Owner)!");
+        //TextView welcomeText = findViewById(R.id.welcomeText);
+        //welcomeText.setText("Welcome (Club Owner)!");
 
+        Button routePlanningButton = findViewById(R.id.btnRoutePlanning);
         Button eventCreationButton = findViewById(R.id.btnEventCreation);
+        Button registrationManagementButton = findViewById(R.id.btnRegistrationManagement);
+        Button resultsAndAwardsButton = findViewById(R.id.btnResultsAndAwards);
         eventCreationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -27,7 +30,7 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
             }
         });
 
-        Button routePlanningButton = findViewById(R.id.btnRoutePlanning);
+
         routePlanningButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +39,7 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
             }
         });
 
-        Button registrationManagementButton = findViewById(R.id.btnRegistrationManagement);
+
         registrationManagementButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +48,7 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
             }
         });
 
-        Button resultsAndAwardsButton = findViewById(R.id.btnResultsAndAwards);
+
         resultsAndAwardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
