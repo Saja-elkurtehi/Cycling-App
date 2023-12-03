@@ -13,6 +13,8 @@ public class UserDashboard extends AppCompatActivity {
     private Button eventDiscovery;
     private Button clubDiscovery;
 
+    private Button currentCandE; //current clubs and events
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,7 @@ public class UserDashboard extends AppCompatActivity {
 
         eventDiscovery = findViewById(R.id.eventDiscovery);
         clubDiscovery = findViewById(R.id.clubDiscovery);
+        currentCandE = findViewById(R.id.cevents);
 
         // Set a click listener for the Event Discovery
         eventDiscovery.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +37,13 @@ public class UserDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserDashboard.this, ClubDiscovery.class));
+            }
+        });
+
+        currentCandE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserDashboard.this, CurrentEventsAndClubs.class));
             }
         });
     }

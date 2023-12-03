@@ -11,7 +11,7 @@
         android:id="@+id/CandE_title"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Your Current Clubs & Events"
+        android:text="Your Current Clubs and Events"
         android:textColor="@color/white"
         android:textSize="34dp"
         app:layout_constraintBottom_toBottomOf="parent"

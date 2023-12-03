@@ -57,9 +57,10 @@
         android:cacheColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/search_bar_clubs"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/search_bar_clubs"
         app:layout_constraintTop_toBottomOf="@+id/search_bar_clubs"
-        app:layout_constraintVertical_bias="0.19999999">
+        app:layout_constraintVertical_bias="0.247">
 
     </ListView>
 
