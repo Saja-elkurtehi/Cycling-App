@@ -54,10 +54,14 @@ public class LoginActivity extends AppCompatActivity {
                 // redirect to admin page
                 Intent adminIntent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
                 startActivity(adminIntent);
-            } else if (username.equals("gccadmin") && password.equals("GCCRocks!")){
+            } else if (username.equals("gccadmin") && password.equals("GCCRocks!")) {
                 String accountType = "Club Owner";
                 Intent clubOwnerIntent = new Intent(LoginActivity.this, ClubOwnerDashboardActivity.class);
                 startActivity(clubOwnerIntent);
+            } else if (username.equals("cyclingaddict") && password.equals("cyclingIsLife!")) {
+                String accountType = "Participant";
+                Intent participantIntent = new Intent(LoginActivity.this, UserDashboard.class);
+                startActivity(participantIntent);
             } else{
                 // for now assume user is participant
                 String accountType = "Participant";

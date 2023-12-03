@@ -21,4 +21,28 @@
         <item>Cycling Club</item>
         <item>Participant</item>
     </string-array>
+
+    <!--these are for the user dashboard-->
+    <string name="userdash_prompt">Please choose one of the following options</string>
+    <string name="userdash_ediscovery">Event Discovery</string>
+    <string name="userdash_cdiscovery">Club Discovery</string>
+    <string name="userdash_cevents">Current Events and Clubs</string>
+
+    <!--these are for event discovery-->
+    <string name="ediscovery_prompt1">Filters</string>
+    <string name="select">Select Event Type</string>
+
+    <!--these are for club discovery-->
+    <string name="select_club">Search Club</string>
+    <string name="cdiscovery_prompt1">Check out the available clubs below!</string>
+
+    <!--these are for the club page-->
+    <string name="club_name">Club Name</string>
+    <string name="cDescription_prompt2">Follow this club?</string>
+
+    <!--these are for the current clubs and events page-->
+    <string name="club_prompt">Current Clubs</string>
+    <string name="event_prompt">Current Events</string>
+
+
 </resources>

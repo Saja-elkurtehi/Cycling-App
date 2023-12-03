@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userdashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserDashboard"
+    android:background="@drawable/bb">
+
+  <Button
+      android:id="@+id/eventDiscovery"
+      android:layout_width="300dp"
+      android:layout_height="wrap_content"
+      android:background="@color/colorLightBlue"
+      android:shadowColor="@color/colorLightBlue"
+      android:text="@string/userdash_ediscovery"
+      app:backgroundTint="@color/colorGrey"
+      app:icon="@android:drawable/ic_menu_search"
+      app:iconGravity="textStart"
+      app:iconPadding="2dp"
+      app:iconSize="30dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/userdash_prompt"
+      app:layout_constraintVertical_bias="0.39" />
+
+  <TextView
+      android:id="@+id/userdash_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="User Dashboard"
+      android:textColor="#DDD5D5"
+      android:textSize="34sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.07999998" />
+
+  <TextView
+      android:id="@+id/userdash_prompt"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="60dp"
+      android:text="@string/userdash_prompt"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/userdash_title" />
+
+  <Button
+      android:id="@+id/clubDiscovery"
+      android:layout_width="300dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:background="@color/white"
+      android:text="@string/userdash_cdiscovery"
+      app:backgroundTint="@color/colorGrey"
+      app:icon="@android:drawable/ic_menu_search"
+      app:iconGravity="textStart"
+      app:iconPadding="2dp"
+      app:iconSize="30dp"
+      app:layout_constraintEnd_toEndOf="@+id/eventDiscovery"
+      app:layout_constraintStart_toStartOf="@+id/eventDiscovery"
+      app:layout_constraintTop_toBottomOf="@+id/eventDiscovery" />
+
+  <Button
+      android:id="@+id/cevents"
+      android:layout_width="300dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:background="@color/colorGrey"
+      android:text="@string/userdash_cevents"
+      app:backgroundTint="@color/colorGrey"
+      app:icon="@android:drawable/ic_input_get"
+      app:iconGravity="textStart"
+      app:iconPadding="2dp"
+      app:iconSize="30dp"
+      app:layout_constraintEnd_toEndOf="@+id/clubDiscovery"
+      app:layout_constraintStart_toStartOf="@+id/clubDiscovery"
+      app:layout_constraintTop_toBottomOf="@+id/clubDiscovery" />
+</androidx.constraintlayout.widget.ConstraintLayout>
