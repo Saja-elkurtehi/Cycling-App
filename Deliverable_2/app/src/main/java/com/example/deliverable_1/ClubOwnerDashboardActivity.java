@@ -7,8 +7,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ClubOwnerDashboardActivity extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
 
+public class ClubOwnerDashboardActivity extends AppCompatActivity {
+    private Button signOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +24,7 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
         Button registrationManagementButton = findViewById(R.id.btnRegistrationManagement);
         Button resultsAndAwardsButton = findViewById(R.id.btnResultsAndAwards);
         Button editClubProfile = findViewById(R.id.btnEditClubProfile);
-
+        signOut = findViewById(R.id.signOut);
         // / Set click listeners for the buttons
         eventCreationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,7 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
         });
 
 
+
         resultsAndAwardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,5 +69,23 @@ public class ClubOwnerDashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(ClubOwnerDashboardActivity.this, EditClubProfileActivity.class));
             }
         });
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOutUser();
+            }
+        });
+    }
+
+    private void signOutUser() {
+        // Sign out the user using Firebase Authentication
+        FirebaseAuth.getInstance().signOut();
+
+        // Redirect the user to the login page
+        Intent intent = new Intent(ClubOwnerDashboardActivity.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish(); // Finish the current activity to prevent going back to the dashboard using the back button
     }
 }
+

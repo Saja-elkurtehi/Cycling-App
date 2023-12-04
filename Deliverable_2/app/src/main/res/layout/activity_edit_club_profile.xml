@@ -67,7 +67,7 @@
         <EditText
             android:id="@+id/contactPhoneNumber"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="text"
@@ -89,6 +89,40 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Save Changes" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="29dp" />
+
+        <TextView
+            android:id="@+id/displaySocialMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Social Media Link: "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/displayContactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Name: "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/displayContactPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Phone Number: "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

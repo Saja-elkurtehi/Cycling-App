@@ -33,4 +33,10 @@
         android:textColor="@color/colorLightBlue"
         android:textSize="18sp" />
 
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Out" />
+
 </LinearLayout>
