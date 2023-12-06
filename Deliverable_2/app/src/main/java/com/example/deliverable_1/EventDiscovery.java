@@ -31,8 +31,8 @@ public class EventDiscovery extends AppCompatActivity {
 
     SearchView searchView;
     ListView listView;
-    List<Event> eventList = new ArrayList<>();
-    ArrayAdapter<Event> adapterSearchBar;
+    List<String> eventList = new ArrayList<>();
+    ArrayAdapter<String> adapterSearchBar;
 
     DatabaseReference db;
 
@@ -54,10 +54,12 @@ public class EventDiscovery extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 eventList.clear();
+                events.clear();
 
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Event event = snapshot.getValue(Event.class);
-                    eventList.add(event);
+                    eventList.add(event.getEventName());
+                    events.add(event);
                 }
 
                 adapterSearchBar.notifyDataSetChanged();
@@ -85,7 +87,7 @@ public class EventDiscovery extends AppCompatActivity {
 
         searchView = findViewById(R.id.search_bar_events);
         listView = findViewById(R.id.list_of_events);
-        adapterSearchBar = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_1, android.R.id.text1, eventList);
+        adapterSearchBar = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, eventList);
         listView.setAdapter(adapterSearchBar);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
