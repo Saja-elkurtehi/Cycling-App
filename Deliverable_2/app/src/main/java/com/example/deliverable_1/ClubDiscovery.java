@@ -1,16 +1,27 @@
 package com.example.deliverable_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClubDiscovery extends AppCompatActivity {
 
@@ -19,9 +30,11 @@ public class ClubDiscovery extends AppCompatActivity {
 
     //you may have to replace the "String" with "EventCreationActivity" and will have to populate this
     //array using FireBase
-    String[] clubList = {"clubTest1", "clubTest2", "clubTest3", "clubTest4", "clubTest5"};
+    List<ClubOwner> clubList = new ArrayList<>();
 
-    ArrayAdapter<String>  adapterSearchBar;
+    ArrayAdapter<ClubOwner>  adapterSearchBar;
+
+    DatabaseReference clubOwnersRef;
 
     //for the back button
     private Button backButton;
@@ -29,13 +42,34 @@ public class ClubDiscovery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_discovery);
+        clubOwnersRef = FirebaseDatabase.getInstance().getReference("ClubOwners");
+
+        clubOwnersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                clubList.clear();
+
+                for (DataSnapshot clubOwnerSnapshot : dataSnapshot.getChildren()){
+                    ClubOwner clubOwner = clubOwnerSnapshot.getValue(ClubOwner.class);
+                    clubList.add(clubOwner);
+                }
+
+                adapterSearchBar.notify();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("TAG", "Failed to read value.", error.toException());
+            }
+        });
 
         //creating a temporary object for list view and search view
 
         searchView = findViewById(R.id.search_bar_clubs);
         listView = findViewById(R.id.list_of_clubs);
 
-        adapterSearchBar = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, clubList);
+        adapterSearchBar = new ArrayAdapter<ClubOwner>(this, android.R.layout.simple_list_item_1, android.R.id.text1, clubList);
         listView.setAdapter(adapterSearchBar);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

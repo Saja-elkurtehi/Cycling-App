@@ -1,5 +1,6 @@
 package com.example.deliverable_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
@@ -13,16 +14,28 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventDiscovery extends AppCompatActivity {
 
-    String[] events = {"Event1", "Event2", "Event3", "Event4", "Event5"};
+    List<Event> events = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView;
-    ArrayAdapter<String> adapterEvent;
+    ArrayAdapter<Event> adapterEvent;
 
     SearchView searchView;
     ListView listView;
-    String[] eventList = {"eventTest1", "eventTest2", "eventTest3", "eventTest4", "eventTest5"};
-    ArrayAdapter<String> adapterSearchBar;
+    List<Event> eventList = new ArrayList<>();
+    ArrayAdapter<Event> adapterSearchBar;
+
+    DatabaseReference db;
+
 
     Button backButton;
 
@@ -30,10 +43,32 @@ public class EventDiscovery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_discovery);
+        db = FirebaseDatabase.getInstance().getReference("Events");
 
         autoCompleteTextView = findViewById(R.id.auto_complete_events2);
-        adapterEvent = new ArrayAdapter<String>(this, R.layout.list_item_events, events);
+        adapterEvent = new ArrayAdapter<Event>(this, R.layout.list_item_events, events);
         autoCompleteTextView.setAdapter(adapterEvent);
+
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                eventList.clear();
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Event event = snapshot.getValue(Event.class);
+                    eventList.add(event);
+                }
+
+                adapterSearchBar.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -50,8 +85,21 @@ public class EventDiscovery extends AppCompatActivity {
 
         searchView = findViewById(R.id.search_bar_events);
         listView = findViewById(R.id.list_of_events);
-        adapterSearchBar = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, eventList);
+        adapterSearchBar = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_1, android.R.id.text1, eventList);
         listView.setAdapter(adapterSearchBar);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterSearchBar.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
