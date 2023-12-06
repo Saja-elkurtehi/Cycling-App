@@ -89,4 +89,13 @@
       app:backgroundTint="#575555"
       tools:layout_editor_absoluteX="150dp"
       tools:layout_editor_absoluteY="584dp" />
+
+  <Button
+      android:id="@+id/rateEventButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Rate an Event"
+      app:backgroundTint="#575555"
+      tools:layout_editor_absoluteX="138dp"
+      tools:layout_editor_absoluteY="309dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
