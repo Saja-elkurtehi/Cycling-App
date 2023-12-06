@@ -17,6 +17,11 @@ public class ClubOwner extends User{
         this.name = name;
         this.phone = phone;
     }
+    public ClubOwner(String name) {
+        super();
+        this.name = name;
+    }
+
 
     public String getSocialMedia() {
         return socialMedia;
@@ -32,6 +37,9 @@ public class ClubOwner extends User{
 
     public Club getOwnedClub(){
         return this.ownedClub;
+    }
+    public String toString() {
+        return name;
     }
 
 }

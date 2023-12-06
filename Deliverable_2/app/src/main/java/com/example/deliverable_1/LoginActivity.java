@@ -81,6 +81,13 @@ public class LoginActivity extends AppCompatActivity {
             showError(inputUsername, "Your username is not valid!");
         } else if (password.isEmpty() || password.length() < 5) {
             showError(inputPassword, "Your password is incorrect");
+        } else if (username.equals("admin") && password.equals("admin")) {
+            // redirect to admin page
+            Intent adminIntent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
+            startActivity(adminIntent);
+        } else if (username.equals("gccadmin") && password.equals("GCCRocks!")) {
+            Intent gccAdminIntent = new Intent(LoginActivity.this, ClubOwnerDashboardActivity.class);
+            startActivity(gccAdminIntent);
         } else {
             mAuth.signInWithEmailAndPassword(username , password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
