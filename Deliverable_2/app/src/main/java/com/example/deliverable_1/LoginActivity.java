@@ -25,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import io.reactivex.annotations.NonNull;
 
-// ... (Your existing imports)
 
 public class LoginActivity extends AppCompatActivity {
     private String userRole = "participant";
