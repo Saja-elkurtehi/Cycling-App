@@ -73,8 +73,7 @@ public class EventDiscovery extends AppCompatActivity {
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Event selected = (Event) adapterView.getItemAtPosition(position);
-                String selectedEvent = selected.getEventName();
+                String selectedEvent = adapterView.getItemAtPosition(position).toString();
                 Toast.makeText(EventDiscovery.this, "Item: " + selectedEvent, Toast.LENGTH_SHORT).show();
 
                 // Start EventDescription activity and pass selected event name
@@ -105,8 +104,7 @@ public class EventDiscovery extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Event selected = (Event) adapterView.getItemAtPosition(position);
-                String selectedEvent = selected.getEventName();
+                String selectedEvent = adapterView.getItemAtPosition(position).toString();
                 Toast.makeText(EventDiscovery.this, "You clicked: " + selectedEvent, Toast.LENGTH_SHORT).show();
 
                 // Start EventDescription activity and pass selected event name
