@@ -1,23 +1,57 @@
 package com.example.deliverable_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventDescription extends AppCompatActivity {
 
     private Button backButton;
     private Button confirm;
 
+    List<Event> eventList = new ArrayList<>();
+    ArrayAdapter<Event> adapterSearchBar;
+    DatabaseReference db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_description);
+        db = FirebaseDatabase.getInstance().getReference("Events");
 
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                eventList.clear();
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Event event = snapshot.getValue(Event.class);
+                    eventList.add(event);
+                }
+
+                adapterSearchBar.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         //  DELETE THIS COMMENT AFTERWARDS
         //I hope this provides some direction. Its from the HomePage.class
         String eventName = getIntent().getStringExtra("USERNAME"); // will have to replace USERNAME with club name

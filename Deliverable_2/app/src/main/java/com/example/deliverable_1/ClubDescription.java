@@ -1,21 +1,59 @@
 package com.example.deliverable_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClubDescription extends AppCompatActivity {
 
     private Button backButton;
     private Button confirm;
+
+    List<ClubOwner> clubList = new ArrayList<>();
+
+    ArrayAdapter<ClubOwner> adapterSearchBar;
+
+    DatabaseReference clubOwnersRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_description);
+        clubOwnersRef = FirebaseDatabase.getInstance().getReference("ClubOwners");
+        clubOwnersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                clubList.clear();
+
+                for (DataSnapshot clubOwnerSnapshot : dataSnapshot.getChildren()){
+                    ClubOwner clubOwner = clubOwnerSnapshot.getValue(ClubOwner.class);
+                    clubList.add(clubOwner);
+                }
+
+                adapterSearchBar.notify();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("TAG", "Failed to read value.", error.toException());
+            }
+        });
 
         //  DELETE THIS COMMENT AFTERWARDS
         //I hope this provides some direction. Its from the HomePage.class

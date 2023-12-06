@@ -5,6 +5,8 @@ public class ClubOwner extends User{
     private String name;
     private String phone;
 
+    private Club ownedClub;
+
     // Required default constructor for Firebase
     public ClubOwner() {
     }
@@ -26,6 +28,10 @@ public class ClubOwner extends User{
 
     public String getPhone() {
         return phone;
+    }
+
+    public Club getOwnedClub(){
+        return this.ownedClub;
     }
 
 }
