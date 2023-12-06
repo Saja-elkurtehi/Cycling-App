@@ -27,12 +27,14 @@ public class EventDiscovery extends AppCompatActivity {
 
     List<Event> events = new ArrayList<>();
     AutoCompleteTextView autoCompleteTextView;
-    ArrayAdapter<Event> adapterEvent;
+    ArrayAdapter<String> adapterEvent;
 
     SearchView searchView;
     ListView listView;
     List<Event> eventList = new ArrayList<>();
-    ArrayAdapter<Event> adapterSearchBar;
+
+    List<String> eventsNames = new ArrayList<>();
+    ArrayAdapter<String> adapterSearchBar;
 
     DatabaseReference db;
 
@@ -46,7 +48,7 @@ public class EventDiscovery extends AppCompatActivity {
         db = FirebaseDatabase.getInstance().getReference("Events");
 
         autoCompleteTextView = findViewById(R.id.auto_complete_events2);
-        adapterEvent = new ArrayAdapter<Event>(this, R.layout.list_item_events, events);
+        adapterEvent = new ArrayAdapter<String>(this, R.layout.list_item_events, eventsNames);
         autoCompleteTextView.setAdapter(adapterEvent);
 
         db.addValueEventListener(new ValueEventListener() {
@@ -58,6 +60,7 @@ public class EventDiscovery extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Event event = snapshot.getValue(Event.class);
                     eventList.add(event);
+                    eventsNames.add(event.getEventName());
                 }
 
                 adapterSearchBar.notifyDataSetChanged();
@@ -85,7 +88,7 @@ public class EventDiscovery extends AppCompatActivity {
 
         searchView = findViewById(R.id.search_bar_events);
         listView = findViewById(R.id.list_of_events);
-        adapterSearchBar = new ArrayAdapter<Event>(this, android.R.layout.simple_list_item_1, android.R.id.text1, eventList);
+        adapterSearchBar = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, eventsNames);
         listView.setAdapter(adapterSearchBar);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
