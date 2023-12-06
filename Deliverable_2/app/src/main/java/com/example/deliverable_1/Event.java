@@ -48,4 +48,8 @@ public class Event {
     public void setParticipantLimit(String participantLimit) {
         this.participantLimit = participantLimit;
     }
+
+    public String toString(){
+        return eventName;
+    }
 }
