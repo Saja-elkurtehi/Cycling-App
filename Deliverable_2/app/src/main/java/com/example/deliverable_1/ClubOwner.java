@@ -1,6 +1,6 @@
 package com.example.deliverable_1;
 
-public class ClubOwner {
+public class ClubOwner extends User{
     private String socialMedia;
     private String name;
     private String phone;
@@ -10,6 +10,7 @@ public class ClubOwner {
     }
 
     public ClubOwner(String socialMedia, String name, String phone) {
+        super();
         this.socialMedia = socialMedia;
         this.name = name;
         this.phone = phone;
