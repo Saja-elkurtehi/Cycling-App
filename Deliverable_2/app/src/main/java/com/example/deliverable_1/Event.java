@@ -1,10 +1,15 @@
 package com.example.deliverable_1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Event {
     private String eventName;
     private String eventRoute;
     private String eventDifficulty;
     private String participantLimit;
+
+    List<Participant> participantList;
 
     // Empty constructor needed for Firebase
     public Event() {
@@ -15,6 +20,7 @@ public class Event {
         this.eventRoute = eventRoute;
         this.eventDifficulty = eventDifficulty;
         this.participantLimit = participantLimit;
+        this.participantList = new ArrayList<>();
     }
 
     public String getEventName() {
@@ -51,5 +57,9 @@ public class Event {
 
     public String toString(){
         return eventName;
+    }
+
+    public void addParticipant(Participant participant){
+        participantList.add(participant);
     }
 }

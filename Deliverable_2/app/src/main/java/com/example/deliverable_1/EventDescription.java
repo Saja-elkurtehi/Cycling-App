@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,7 +82,22 @@ public class EventDescription extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //NOT SURE IF WE SHOULD BOTHER ADDING IT TO SOMEWHERE (WOULD BE ADDED TO FIREBASE)
+                String username = getIntent().getStringExtra("USERNAME");
+                String email = getIntent().getStringExtra("EMAIL");
+
+                TextView event = findViewById(R.id.eventName);
+                db.push().setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                            Toast.makeText(EventDescription.this, "Event joined successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            Toast.makeText(EventDescription.this, "Failed to join event", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }
