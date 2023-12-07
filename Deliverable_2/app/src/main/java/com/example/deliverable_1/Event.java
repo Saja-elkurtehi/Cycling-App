@@ -17,9 +17,7 @@ public class Event {
         this.participantLimit = participantLimit;
     }
 
-    public String getEventName() {
-        return eventName;
-    }
+
 
     public void setEventName(String eventName) {
         this.eventName = eventName;
@@ -49,7 +47,5 @@ public class Event {
         this.participantLimit = participantLimit;
     }
 
-    public String toString(){
-        return eventName;
-    }
+
 }

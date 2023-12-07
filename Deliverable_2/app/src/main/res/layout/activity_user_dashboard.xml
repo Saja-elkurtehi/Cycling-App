@@ -87,8 +87,10 @@
       android:layout_height="wrap_content"
       android:text="Sign Out"
       app:backgroundTint="#575555"
-      tools:layout_editor_absoluteX="150dp"
-      tools:layout_editor_absoluteY="584dp" />
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="@+id/cevents"
+      app:layout_constraintStart_toStartOf="@+id/cevents"
+      app:layout_constraintTop_toBottomOf="@+id/cevents" />
 
   <Button
       android:id="@+id/rateEventButton"
@@ -96,6 +98,8 @@
       android:layout_height="wrap_content"
       android:text="Rate an Event"
       app:backgroundTint="#575555"
-      tools:layout_editor_absoluteX="138dp"
-      tools:layout_editor_absoluteY="309dp" />
+      app:layout_constraintBottom_toTopOf="@+id/eventDiscovery"
+      app:layout_constraintEnd_toEndOf="@+id/eventDiscovery"
+      app:layout_constraintStart_toStartOf="@+id/eventDiscovery"
+      app:layout_constraintTop_toBottomOf="@+id/userdash_prompt" />
 </androidx.constraintlayout.widget.ConstraintLayout>
