@@ -75,6 +75,9 @@
         <activity
             android:name=".EditClubProfileActivity"
             android:exported="true" />
+        <activity
+            android:name=".RateActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

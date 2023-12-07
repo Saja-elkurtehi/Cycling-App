@@ -88,7 +88,10 @@ public class LoginActivity extends AppCompatActivity {
         } else if (username.equals("gccadmin") && password.equals("GCCRocks!")) {
             Intent gccAdminIntent = new Intent(LoginActivity.this, ClubOwnerDashboardActivity.class);
             startActivity(gccAdminIntent);
-        } else {
+        } else if (username.equals("cyclingaddict") && password.equals("cyclingIsLife!")) {
+            Intent participantIntent = new Intent(LoginActivity.this, UserDashboard.class);
+            startActivity(participantIntent);
+        }else{
             mAuth.signInWithEmailAndPassword(username , password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override

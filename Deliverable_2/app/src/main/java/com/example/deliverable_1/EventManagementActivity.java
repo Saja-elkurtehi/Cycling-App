@@ -10,12 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,126 +27,141 @@ public class EventManagementActivity extends AppCompatActivity {
 
     private Integer selectedIndex;
 
-    // Firebase database reference
-    private DatabaseReference eventsReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_management);
 
-        // Initialize Firebase
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
+        // Initialize UI components
+        // EditText for event type and details
+        eventTypeEditText = findViewById(R.id.eventType);
+        eventDetailsEditText = findViewById(R.id.eventDetails);
 
-        // Check if the user is authenticated
-        if (user != null) {
-            // Use the UID of the authenticated user
-            String uid = user.getUid();
+        // Checkboxes for participant requirements
+        under18CheckBox = findViewById(R.id.under18);
+        eighteenToTwentyFiveCheckBox = findViewById(R.id.eighteenToTwentyFive);
+        twentySixToSixtyFiveCheckBox = findViewById(R.id.twentySixToSixtyFive);
+        over65CheckBox = findViewById(R.id.over65);
 
-            // Set the reference to "Events" node under the UID of the authenticated user
-            eventsReference = firebaseDatabase.getReference("Events").child(uid);
+        beginnerCheckBox = findViewById(R.id.beginner);
+        intermediateCheckBox = findViewById(R.id.intermediate);
+        advancedCheckBox = findViewById(R.id.advanced);
+        expertCheckBox = findViewById(R.id.expert);
 
-            // Initialize UI components
-            eventTypeEditText = findViewById(R.id.eventType);
-            eventDetailsEditText = findViewById(R.id.eventDetails);
-            under18CheckBox = findViewById(R.id.under18);
-            eighteenToTwentyFiveCheckBox = findViewById(R.id.eighteenToTwentyFive);
-            twentySixToSixtyFiveCheckBox = findViewById(R.id.twentySixToSixtyFive);
-            over65CheckBox = findViewById(R.id.over65);
-            beginnerCheckBox = findViewById(R.id.beginner);
-            intermediateCheckBox = findViewById(R.id.intermediate);
-            advancedCheckBox = findViewById(R.id.advanced);
-            expertCheckBox = findViewById(R.id.expert);
-            slowCheckBox = findViewById(R.id.slow);
-            moderateCheckBox = findViewById(R.id.moderate);
-            fastCheckBox = findViewById(R.id.fast);
-            extremeCheckBox = findViewById(R.id.extreme);
-            addEventButton = findViewById(R.id.btnAddEvent);
-            editEventButton = findViewById(R.id.btnEditEvent);
-            deleteEventButton = findViewById(R.id.btnDeleteEvent);
-            backToAdminDashboardButton = findViewById(R.id.btnBackToAdminDashboard);
+        slowCheckBox = findViewById(R.id.slow);
+        moderateCheckBox = findViewById(R.id.moderate);
+        fastCheckBox = findViewById(R.id.fast);
+        extremeCheckBox = findViewById(R.id.extreme);
 
-            events = new ArrayList<>();
-            eventAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, events);
-            eventListView = findViewById(R.id.eventListView);
-            eventListView.setAdapter(eventAdapter);
+        // Buttons for adding, editing, and deleting events
+        addEventButton = findViewById(R.id.btnAddEvent);
+        editEventButton = findViewById(R.id.btnEditEvent);
+        deleteEventButton = findViewById(R.id.btnDeleteEvent);
+        backToAdminDashboardButton = findViewById(R.id.btnBackToAdminDashboard);
 
-            addEventButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String eventType = eventTypeEditText.getText().toString();
-                    String eventDetails = eventDetailsEditText.getText().toString();
+        // Initialize the list of events
+        events = new ArrayList<>();
 
-                    if (!eventType.isEmpty() && !eventDetails.isEmpty()) {
-                        String eventDescription = setEvent(eventType, eventDetails);
-                        saveEventToDatabase(eventDescription);
+        // Initialize the adapter for the event list view
+        eventAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, events);
 
-                        events.add(eventDescription);
-                        eventAdapter.notifyDataSetChanged();
-                        clearInputFields();
-                    } else {
-                        Toast.makeText(EventManagementActivity.this, "Please enter event type and details", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+        // Set the adapter for the eventListView
+        eventListView = findViewById(R.id.eventListView);
+        eventListView.setAdapter(eventAdapter);
 
-            editEventButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String updatedEventType = eventTypeEditText.getText().toString();
-                    String updatedEventDetails = eventDetailsEditText.getText().toString();
+        // Set click listener for the "Add Event" button
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String eventType = eventTypeEditText.getText().toString();
+                String eventDetails = eventDetailsEditText.getText().toString();
 
-                    if (!updatedEventType.isEmpty() && !updatedEventDetails.isEmpty()) {
-                        String eventDescription = setEvent(updatedEventType, updatedEventDetails);
-                        updateEventInDatabase(selectedIndex, eventDescription);
+                if (!eventType.isEmpty() && !eventDetails.isEmpty()) {
+                    // Build the participant requirements string
 
-                        events.set(selectedIndex, eventDescription);
-                        eventAdapter.notifyDataSetChanged();
-                        clearInputFields();
-                    } else {
-                        Toast.makeText(EventManagementActivity.this, "Please enter event type and details", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                    //The setEvent method is accessed externally
+                    String eventDescription = setEvent(eventType, eventDetails);
 
-            deleteEventButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String eventType = eventTypeEditText.getText().toString();
-                    String eventDetails = eventDetailsEditText.getText().toString();
-                    if (eventType.isEmpty() || eventDetails.isEmpty()) {
-                        Toast.makeText(EventManagementActivity.this, "No event has been selected to delete", Toast.LENGTH_SHORT).show();
-                    } else {
-                        String eventDescription = setEvent(eventType, eventDetails);
-                        deleteEventFromDatabase(selectedIndex);
+                    // Add the event to the list and update the list view
+                    events.add(eventDescription);
+                    eventAdapter.notifyDataSetChanged();
 
-                        events.remove(selectedIndex);
-                        eventAdapter.remove(eventDescription);
-                    }
-                }
-            });
-
-            backToAdminDashboardButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(EventManagementActivity.this, AdminDashboardActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-            eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    selectedIndex = position;
+                    // Clear input fields and checkboxes
                     clearInputFields();
-                    repopulateUI(position);
+                } else {
+                    Toast.makeText(EventManagementActivity.this, "Please enter event type and details", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
+            }
+        });
+
+        // Set click listener for the "Edit Event" button
+        editEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String updatedEventType = eventTypeEditText.getText().toString();
+                String updatedEventDetails = eventDetailsEditText.getText().toString();
+
+                if (!updatedEventType.isEmpty() && !updatedEventDetails.isEmpty()) {
+                    // Build the participant requirements string
+
+
+                    //The setEvent method is accessed externally
+                    String eventDescription = setEvent(updatedEventType, updatedEventDetails);
+
+                    // Add the event to the list and update the list view
+                    events.set(selectedIndex, eventDescription);
+                    // Notify the adapter about the data change
+                    eventAdapter.notifyDataSetChanged();
+                    // Clear input fields and checkboxes
+                    clearInputFields();
+                } else {
+                    Toast.makeText(EventManagementActivity.this, "Please enter event type and details", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Set click listener for the "Delete Event" button
+        deleteEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String eventType = eventTypeEditText.getText().toString();
+                String eventDetails = eventDetailsEditText.getText().toString();
+                if (eventType.isEmpty() || eventDetails.isEmpty()){
+                    Toast.makeText(EventManagementActivity.this, "No event has been selected to delete", Toast.LENGTH_SHORT).show();
+                }else{
+                    String eventDescription = setEvent(eventType, eventDetails);
+                    events.remove(selectedIndex);
+                    eventAdapter.remove(eventDescription);
+                }
+            }
+        });
+
+        backToAdminDashboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate back to the AdminDashboardActivity
+                Intent intent = new Intent(EventManagementActivity.this, AdminDashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Edit Event: This is the first step in repopulating the EventManagement Page
+        eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Handle item click, e.g., repopulate UI components
+                selectedIndex = position;
+                clearInputFields();
+                repopulateUI(position);
+            }
+        });
+
+
+
     }
 
+    //This is a method that will be used for both the add and edit methods
     private String setEvent(String eventType, String eventDetails) {
         StringBuilder participantRequirements = new StringBuilder("Participant Requirements: ");
         if (under18CheckBox.isChecked()) {
@@ -210,38 +220,13 @@ public class EventManagementActivity extends AppCompatActivity {
         return eventDescription;
     }
 
-    private void saveEventToDatabase(String eventDescription) {
-        // Extract information from the eventDescription
-        String[] parts = eventDescription.split("\n");
-        String eventType = parts[0].trim();
-        String eventDetails = parts[1].trim();
-        String participantRequirements = parts[2].trim();
-        String skillLevel = parts[3].trim();
-        String pace = parts[4].trim();
-
-        // Save each category separately in the database
-        saveEventToDatabase(eventType, eventDetails, participantRequirements, skillLevel, pace);
-    }
-
-    private void updateEventInDatabase(int selectedIndex, String eventDescription) {
-        // Extract information from the eventDescription
-        String[] parts = eventDescription.split("\n");
-        String eventType = parts[0].trim();
-        String eventDetails = parts[1].trim();
-        String participantRequirements = parts[2].trim();
-        String skillLevel = parts[3].trim();
-        String pace = parts[4].trim();
-
-        // Update each category separately in the database
-        updateEventInDatabase(selectedIndex, eventType, eventDetails, participantRequirements, skillLevel, pace);
-    }
-
     // Edit Event: This is the method used to UI components (so the text fields and boxes)
     private void repopulateUI(int position) {
         // Get the selected event from the list
         String selectedEvent = events.get(position);
 
         String[] parts = selectedEvent.split("\n");
+
 
         // Parse the selected event to extract information
         String parsedEventType = parts[0].trim();
@@ -305,39 +290,7 @@ public class EventManagementActivity extends AppCompatActivity {
 
     }
 
-    private void saveEventToDatabase(String eventType, String eventDetails,
-                                     String participantRequirements, String skillLevel, String pace) {
-        // Create a unique key for the event
-        String eventKey = eventsReference.push().getKey();
-
-        // Save each category separately in the database
-        eventsReference.child(eventKey).child("eventType").setValue(eventType);
-        eventsReference.child(eventKey).child("eventDetails").setValue(eventDetails);
-        eventsReference.child(eventKey).child("participantRequirements").setValue(participantRequirements);
-        eventsReference.child(eventKey).child("skillLevel").setValue(skillLevel);
-        eventsReference.child(eventKey).child("pace").setValue(pace);
-        eventsReference.child(eventKey).child("eventName").setValue(eventType);
-    }
-
-
-    private void updateEventInDatabase(int selectedIndex, String eventType, String eventDetails,
-                                       String participantRequirements, String skillLevel, String pace) {
-        // Retrieve the event key at the selected index
-        String eventKey = eventsReference.getKey();
-
-        // Update each category separately in the database
-        eventsReference.child(eventKey).child("eventType").setValue(eventType);
-        eventsReference.child(eventKey).child("eventDetails").setValue(eventDetails);
-        eventsReference.child(eventKey).child("participantRequirements").setValue(participantRequirements);
-        eventsReference.child(eventKey).child("skillLevel").setValue(skillLevel);
-        eventsReference.child(eventKey).child("pace").setValue(pace);
-    }
-
-    private void deleteEventFromDatabase(int selectedIndex) {
-        String eventKey = eventsReference.getKey();
-        eventsReference.child(eventKey).removeValue();
-    }
-
+    // Helper method to clear input fields and checkboxes
     private void clearInputFields() {
         eventTypeEditText.getText().clear();
         eventDetailsEditText.getText().clear();
